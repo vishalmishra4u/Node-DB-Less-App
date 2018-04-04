@@ -7,8 +7,9 @@ var http = require('http');
 var https = require('https');
 var url = require('url');
 var StringDecoder = require('string_decoder').StringDecoder;
-var config = require('./config');
+var config = require('./lib/config');
 var fs = require('fs');
+var helpers = require('./lib/helpers');
 
 //Instantiating the http port
 var httpServer = http.createServer(function(req, res){
@@ -70,7 +71,7 @@ var unifiedServer = function(req, res){
       'queryStringObject' : queryStringObject,
       'headers' : headers,
       'method' : method,
-      'payload' : buffer
+      'payload' : helpers.parseJsonTOObject(buffer)
     };
 
     chosenHandler(data, function(statusCode, payload){
