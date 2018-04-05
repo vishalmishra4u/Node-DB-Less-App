@@ -9,6 +9,7 @@ var url = require('url');
 var StringDecoder = require('string_decoder').StringDecoder;
 var config = require('./lib/config');
 var fs = require('fs');
+var handlers = require('./lib/handlers');
 var helpers = require('./lib/helpers');
 
 //Instantiating the http port
@@ -90,20 +91,7 @@ var unifiedServer = function(req, res){
   });
 };
 
-//Define the handlers
-var handlers = {};
-
-//ping handler
-handlers.ping = function(data, callback){
-  callback(200);
-}
-
-//Not found handler
-handlers.notFound = function(data, callback){
-  callback(404);
-};
-
 //Define a request router
 var router = {
-  'ping' : handlers.ping
+  'user' : handlers.users
 };
