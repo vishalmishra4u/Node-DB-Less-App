@@ -72,7 +72,7 @@ var unifiedServer = function(req, res){
       'queryStringObject' : queryStringObject,
       'headers' : headers,
       'method' : method,
-      'payload' : helpers.parseJsonTOObject(buffer)
+      'payload' : helpers.parseJsonToObject(buffer)
     };
 
     chosenHandler(data, function(statusCode, payload){
@@ -93,5 +93,6 @@ var unifiedServer = function(req, res){
 
 //Define a request router
 var router = {
-  'user' : handlers.users
+  'user' : handlers.users,
+  'tokens' : handlers.tokens
 };
